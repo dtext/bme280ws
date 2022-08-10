@@ -20,12 +20,12 @@ def get_temp():
     t, _, _ = sensor.read_sensor()
     return t
 
-@app.get("/humidity")
+@app.get("/pressure")
 def get_humid():
     _, p, _ = sensor.read_sensor()
     return p
 
-@app.get("/pressure")
+@app.get("/humidity")
 def get_pressure():
     _, _, h = sensor.read_sensor()
     return h
