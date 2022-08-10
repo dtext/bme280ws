@@ -5,26 +5,29 @@ connected to a raspberry pi's I2C bus.
 
 ## Wait, what?
 
-Bosch's BME280 sensor is a small, low cost, low power sensor that measures ambient temperature,
+Bosch's
+[BME280](https://www.bosch-sensortec.com/products/environmental-sensors/humidity-sensors-bme280/)
+sensor is a small, low cost, low power sensor that measures ambient temperature,
 pressure and relative humidity. Data is read via an I2C or SPI bus, both of which are provided by
-the Raspberry Pi 4.
+the [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/).
 
-I'm using the Raspberry Pi 4 to host an instance of homeassistant, an open source and (mostly)
-excellent community home automation solution. Up until recently (mid-2022, that is), the team
-provided support for a BME280 connected to the Pi's I2C bus, offering me a great, simple and
-low-cost solution to most of my measurement needs.
+I'm using the Raspberry Pi 4 to host an instance of [homeassistant](https://www.home-assistant.io/),
+an open source and (mostly) excellent community home automation solution. Up until recently
+(mid-2022, that is), the team provided support for a BME280 connected to the Pi's I2C bus, offering
+me a great, simple and low-cost solution to most of my measurement needs.
 
-Sadly, since then, the team decided to not only drop support for anything GPIO, but also to remove
-all integrations using it entirely. At that point, I already had [weather.py](app/weather.py) lying
-around from playing with the sensor before, and thus this project was born. At this point, I like to
-thank the kind developer who put their python code up for everyone to use in a blog article that I
-sadly can't seem to find anymore.
+Sadly, since then,
+[the team decided](https://github.com/home-assistant/architecture/blob/master/adr/0019-GPIO.md)
+to not only drop support for anything GPIO, but also to remove all integrations using it entirely.
+At that point, I already had [weather.py](app/weather.py) lying around from playing with the sensor
+before, and thus this project was born. At this point, I like to thank the kind developer who put
+their python code up for everyone to use in a blog article that I sadly can't seem to find anymore.
 
-What problem do I solve doing it this way? Instead of _just using ESPHome_ (which actually seems to
-be a wonderful project as far as I can tell!) as mostly everyone suggested, I decided to stitch
-together something in software so my smooth software developer brain wouldn't have to deal with
-hardware problems like powering an ESP32 or ESP8266 and having all that gross wiring dangling
-everywhere.
+What problem do I solve doing it this way? Instead of _just using [ESPHome](https://esphome.io/)_
+(which actually seems to be a wonderful project as far as I can tell!) as mostly everyone suggested,
+I decided to stitch together something in software so my smooth software developer brain wouldn't
+have to deal with hardware problems like powering an ESP32 or ESP8266 and having all that gross
+wiring dangling everywhere.
 
 But how does that solve my problem? Great question! As long as the homeassistant team doesn't decide
 to remove the RESTful sensor integration, I can use it to query sensor data via HTTP from an API
@@ -103,7 +106,7 @@ sensor:
 ## Why Python?
 
 Because. Look, I'm not particularly happy about it either. At least, fastapi seems to be the way to
-go about it these days, and it works well for me. 
+go about it these days, and it works well for me.
 
 ## Why not X?
 
