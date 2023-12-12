@@ -19,6 +19,6 @@ jobs:
     - name: build image
       uses: docker/build-push-action@v3
       with:
-        platforms: 'linux/arm/v7'
+        platforms: 'linux/arm64'
         push: true
         tags: dtext/bme280ws:latest
